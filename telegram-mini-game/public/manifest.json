@@ -1,0 +1,18 @@
+{
+  "name": "Tap-to-Earn Game",
+  "short_name": "Tap-to-Earn",
+  "description": "Ekrana tıklayarak puan kazan ve ödüller al!",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f9f1de",
+  "theme_color": "#c13354",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+} 

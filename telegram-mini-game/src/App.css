@@ -1,0 +1,487 @@
+#root {
+  max-width: 100%;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.tap-area {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.15s ease-in-out;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 8px 24px rgba(193, 51, 84, 0.2);
+  will-change: transform;
+}
+
+.tap-area:active {
+  transform: scale(0.95);
+  box-shadow: 0 4px 12px rgba(193, 51, 84, 0.3);
+}
+
+/* Batarya dostu animasyon - daha az GPU kullanımı */
+@media (prefers-reduced-motion: reduce) {
+  .tap-area:active {
+    transform: scale(0.98);
+  }
+  
+  .animate-pulse {
+    animation: none !important;
+  }
+  
+  .tap-icon {
+    animation: none !important;
+  }
+}
+
+/* Altın tıklama efekti */
+.golden-tap {
+  background: linear-gradient(to bottom, #f59e0b, #b45309) !important;
+  border-color: #fcd34d !important;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5), 0 0 40px rgba(245, 158, 11, 0.2) !important;
+  animation: golden-pulse 1.5s infinite alternate;
+}
+
+@keyframes golden-pulse {
+  0% {
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.5), 0 0 40px rgba(245, 158, 11, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 25px rgba(245, 158, 11, 0.7), 0 0 50px rgba(245, 158, 11, 0.4);
+  }
+}
+
+/* Animasyon pulse */
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Tıklama ikonunun animasyonu */
+.tap-icon {
+  animation: bounce 1.5s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Tap efekti - vurgu animasyonu */
+.tap-area::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: rgba(255, 255, 255, 0.8);
+  opacity: 0;
+  border-radius: 100%;
+  transform: scale(1, 1) translate(-50%, -50%);
+  transform-origin: 50% 50%;
+}
+
+.tap-area:active::after {
+  animation: ripple 0.4s ease-out;
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0, 0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(300, 300);
+    opacity: 0;
+  }
+}
+
+/* Seviye ilerleme çubuğu */
+.level-indicator {
+  transition: all 0.4s ease;
+}
+
+.level-indicator div div {
+  transition: width 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 1px 3px rgba(193, 51, 84, 0.3);
+}
+
+/* Puan görüntüleme animasyonu */
+.score-display {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.score-display::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  z-index: -1;
+  background: linear-gradient(135deg, #c13354, #852040);
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+.score-display:active::before {
+  opacity: 0.2;
+}
+
+.score-display p:first-child {
+  transition: all 0.2s ease;
+}
+
+.score-display p:first-child:active {
+  transform: scale(1.1);
+}
+
+/* Aktif ödüller */
+.active-rewards {
+  animation: slide-down 0.3s ease-out;
+}
+
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Arka plan ve görsel vurgular için */
+.app-container::before,
+.app-container::after {
+  content: '';
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.15;
+  z-index: -1;
+  transition: all 1s ease;
+}
+
+.app-container::before {
+  background: radial-gradient(circle, #c13354 0%, transparent 70%);
+  width: 60vw;
+  height: 60vw;
+  top: -20vw;
+  right: -20vw;
+}
+
+.app-container::after {
+  background: radial-gradient(circle, #c13354 0%, transparent 70%);
+  width: 40vw;
+  height: 40vw;
+  bottom: -10vw;
+  left: -10vw;
+}
+
+/* Mobil dokunmatik optimizasyonları */
+@media (hover: none) {
+  .tap-area {
+    transform: none;
+  }
+
+  button, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .active-rewards > div {
+    min-height: 32px;
+  }
+  
+  @media (orientation: landscape) {
+    .app-container {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    
+    .level-indicator {
+      margin-bottom: 0.5rem;
+    }
+    
+    .tap-area {
+      height: 160px;
+    }
+  }
+}
+
+/* Düşük veri trafiki için optimizasyonlar */
+@media (prefers-reduced-data: reduce) {
+  .app-container::before,
+  .app-container::after {
+    display: none;
+  }
+  
+  .tap-icon {
+    animation-duration: 3s;
+  }
+  
+  .golden-tap {
+    animation: none;
+  }
+}
+
+/* Düşük güç modu için optimizasyonlar */
+@media (prefers-reduced-power: reduce) {
+  * {
+    animation-duration: 2s !important;
+    transition-duration: 0.6s !important;
+    animation-iteration-count: 2 !important;
+  }
+}
+
+/* Koyu tema */
+.dark-theme .app-container {
+  background: linear-gradient(to bottom, #1e293b, #0f172a);
+  color: #e2e8f0;
+}
+
+.dark-theme .level-indicator div:first-child {
+  color: #e2e8f0;
+}
+
+.dark-theme .level-indicator div:last-child {
+  background-color: #334155;
+}
+
+.dark-theme .info-panel {
+  background-color: #334155;
+  color: #e2e8f0;
+}
+
+.dark-theme .info-panel p {
+  color: #cbd5e1;
+}
+
+.dark-theme .score-display {
+  background-color: #0f172a;
+  color: #e2e8f0;
+}
+
+/* Mobil ekran dokunma optimizasyonları */
+.tap-area {
+  touch-action: manipulation;
+  -webkit-touch-callout: none;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(203, 213, 225, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(193, 51, 84, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(193, 51, 84, 0.5);
+}
+
+/* Çevrimdışı mod uyarısı */
+.offline-badge {
+  position: fixed;
+  top: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f43f5e;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  z-index: 100;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  animation: fade-in-out 2s ease infinite alternate;
+}
+
+@keyframes fade-in-out {
+  0%, 100% {
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Tema stilleri - Neon */
+.theme-neon .app-container {
+  background: linear-gradient(to bottom, #0c0118, #1a0536);
+  color: #f0abfc;
+}
+
+.theme-neon .tap-area {
+  background: linear-gradient(to bottom, #6d28d9, #4c1d95) !important;
+  border-color: #a78bfa !important;
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.5), 0 0 40px rgba(167, 139, 250, 0.2) !important;
+}
+
+.theme-neon .score-display {
+  background-color: #4c1d95;
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.3);
+}
+
+.theme-neon .level-indicator div:last-child {
+  background-color: #581c87;
+}
+
+.theme-neon .level-indicator div div {
+  background: linear-gradient(to right, #8b5cf6, #d946ef);
+  box-shadow: 0 0 10px rgba(139, 92, 246, 0.5);
+}
+
+.theme-neon .info-panel {
+  background-color: #581c87;
+  color: #f0abfc;
+  box-shadow: 0 0 15px rgba(167, 139, 250, 0.2);
+}
+
+.theme-neon .tap-area::after {
+  background: rgba(167, 139, 250, 0.8);
+}
+
+.theme-neon .active-rewards > div {
+  background-color: #4c1d95;
+  color: #f0abfc;
+}
+
+/* Tema stilleri - Pastel */
+.theme-pastel .app-container {
+  background: linear-gradient(to bottom, #f0f9ff, #e0f2fe);
+  color: #0369a1;
+}
+
+.theme-pastel .tap-area {
+  background: linear-gradient(to bottom, #0ea5e9, #0284c7) !important;
+  border-color: #7dd3fc !important;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2) !important;
+}
+
+.theme-pastel .score-display {
+  background-color: #0284c7;
+}
+
+.theme-pastel .level-indicator div:last-child {
+  background-color: #e0f2fe;
+}
+
+.theme-pastel .level-indicator div div {
+  background: #0ea5e9;
+}
+
+.theme-pastel .info-panel {
+  background-color: #e0f2fe;
+  color: #0369a1;
+}
+
+.theme-pastel .active-rewards > div {
+  background-color: #bae6fd;
+  color: #0369a1;
+}
+
+/* Çevrimdışı mod stillemesi */
+.offline-mode * {
+  filter: grayscale(30%);
+}
+
+.offline-mode .tap-area {
+  opacity: 0.8;
+  box-shadow: none !important;
+}
+
+.offline-mode .tap-area::after {
+  display: none;
+}
+
+/* Günlük görevler için animasyon */
+.task-completed {
+  animation: task-complete-pulse 2s ease;
+}
+
+@keyframes task-complete-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(193, 51, 84, 0.3);
+  }
+}
+
+/* Liderlik tablosu animasyonu */
+.leaderboard-item-highlight {
+  animation: highlight-pulse 2s infinite alternate;
+}
+
+@keyframes highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 rgba(193, 51, 84, 0);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(193, 51, 84, 0.5);
+  }
+}
